@@ -24,29 +24,24 @@ import { createStore } from "redux";
 // akcje (obiekty) - MUSZĄ MIEĆ WŁASNOŚĆ TYPU - jaki rodzaj akcji
 // DON'T MUTATE THE STATE - redux build on IMMUTABILITY (copy)
 // don't mutate the state - redux build on immutability (copy)
-
+import { DECREASE, INCREASE } from "./actions";
+import reducer from "./reducer";
 // initial store
 const initialStore = {
-  count: 78,
+  count: 0,
+  name: "john",
 };
 
 // reducer
-function reducer(state, action) {
-  console.log({ state, action });
-  if (action.type === "DECREASE") {
-    // state.count = state.count - 1;
-    return { count: state.count - 1 };
-  }
-  return state;
-}
 
 // store.getState()
 const store = createStore(reducer, initialStore);
-store.dispatch({ type: "DECREASE" });
-store.dispatch({ type: "DECREASE" });
-store.dispatch({ type: "DECREASE" });
-store.dispatch({ type: "DECREASE" });
-store.dispatch({ type: "DECREASE" });
+store.dispatch({ type: DECREASE });
+
+store.dispatch({ type: INCREASE });
+store.dispatch({ type: INCREASE });
+store.dispatch({ type: INCREASE });
+store.dispatch({ type: INCREASE });
 console.log(store.getState());
 
 function App() {
