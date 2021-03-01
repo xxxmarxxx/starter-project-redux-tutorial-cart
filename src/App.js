@@ -24,34 +24,30 @@ import { createStore } from "redux";
 // akcje (obiekty) - MUSZĄ MIEĆ WŁASNOŚĆ TYPU - jaki rodzaj akcji
 // DON'T MUTATE THE STATE - redux build on IMMUTABILITY (copy)
 // don't mutate the state - redux build on immutability (copy)
-import { DECREASE, INCREASE } from "./actions";
+
 import reducer from "./reducer";
+// react-redux - Provider -wraps app, connect- used in components
+import {Provider} from "react-redux"
 // initial store
 const initialStore = {
-  count: 0,
-  name: "john",
+  cart: cartItems,
+  total: 0,
+  amount: 0,
 };
 
 // reducer
 
 // store.getState()
 const store = createStore(reducer, initialStore);
-store.dispatch({ type: DECREASE });
-
-store.dispatch({ type: INCREASE });
-store.dispatch({ type: INCREASE });
-store.dispatch({ type: INCREASE });
-store.dispatch({ type: INCREASE });
-console.log(store.getState());
 
 function App() {
   // cart setup
 
   return (
-    <main>
-      <Navbar cart={store.getState()} />
+    <Provider store={store}>
+      <Navbar />
       <CartContainer cart={cartItems} />
-    </main>
+    </Provider>
   );
 }
 
