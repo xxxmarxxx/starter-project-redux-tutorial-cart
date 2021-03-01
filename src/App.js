@@ -27,12 +27,12 @@ import { createStore } from "redux";
 
 import reducer from "./reducer";
 // react-redux - Provider -wraps app, connect- used in components
-import {Provider} from "react-redux"
+import { Provider } from "react-redux";
 // initial store
 const initialStore = {
   cart: cartItems,
   total: 0,
-  amount: 0,
+  amount: 8,
 };
 
 // reducer
